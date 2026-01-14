@@ -39,7 +39,10 @@ export default function ESPNHeaderGenerator() {
       const leagueData = await Promise.all(
         refs.map(async (item: { $ref: string | URL | Request }) => {
           try {
-            const r = await fetch(item.$ref);
+            // Force HTTPS for all URLs
+            const refUrl = typeof item.$ref === "string" ? item.$ref : String(item.$ref);
+            const secureUrl = refUrl.replace("http://", "https://");
+            const r = await fetch(secureUrl);
             const l = await r.json();
             return {
               id: l.id,
