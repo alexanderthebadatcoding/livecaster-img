@@ -16,6 +16,7 @@ export default function ESPNHeaderGenerator() {
   const [loadingLeagues, setLoadingLeagues] = useState(false);
 
   const sports = [
+		{ id: "hockey", name: "Hockey" },
     { id: "soccer", name: "Soccer" },
     { id: "football", name: "Football" },
     { id: "basketball", name: "Basketball" },
